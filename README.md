@@ -1,5 +1,6 @@
-README — Web Application Vulnerability Scanning, Risk Evaluation & Alert System
+# README — Web Application Vulnerability Scanning, Risk Evaluation & Alert System
 Project Overview
+
 A Streamlit-based security dashboard that scans target URLs for vulnerabilities, 
 visualises risk through interactive charts, and automatically dispatches HTML 
 email alerts when High or Critical findings are detected. The full application lives in dashboard.py;
@@ -13,7 +14,7 @@ cloudflared (system tool, latest)
 Google Colab (recommended runtime)
 
 
-Setup & Run Instructions
+# Setup & Run Instructions
 Option A — Google Colab (Recommended)
 
 Open the .ipynb in Google Colab.
@@ -27,9 +28,13 @@ GMAIL_PASSWORD : Gmail App Password (16-character, not your account password)
 Run the cells in order:
 
 Cell A : installs nmap, streamlit, plotly, and cloudflared
+
 Cell B : writes dashboard.py to disk
+
 Cell C : writes .streamlit/config.toml (dark theme)
+
 Cell D : launches Streamlit on port 8501
+
 Cell E : creates a Cloudflare tunnel and prints a public URL
 
 Click on the cloudflare link or -
@@ -38,17 +43,10 @@ Copy the trycloudflare.com URL from Cell E output and open it in any browser.
 Option B (Local Machine)
 bash# 1. Install system dependency
 sudo apt-get install -y nmap        # Linux
-# brew install nmap                 # macOS
+brew install nmap                 # macOS
 
-# 2. Install Python packages
-pip install streamlit plotly requests
 
-# 3. Set environment variables
-export API_KEY="your_virustotal_key"
-export GMAIL_SENDER="you@gmail.com"
-export GMAIL_PASSWORD="your_app_password"
-
-# 4. Run Instructions
+# Run Instructions
 streamlit run dashboard.py
 ```
 
@@ -104,15 +102,18 @@ Open `http://localhost:8501` in your browser.
 Credentials are never hardcoded. In Colab they are read from Secrets; locally they are read via `os.environ.get()`.
 
 ---
-
-## Project Structure
 ```
+# Project Structure
+
 .ipynb    ← Main notebook (requirements + launch cells)
+
 dashboard.py              ← Streamlit app (written to disk by Cell B)
+
 scan_results/             ← nmap XML outputs (created at runtime)
+
 .streamlit/config.toml   ← Dark theme configuration
 
-Declaration of AI Tools Used
+# Declaration of AI Tools Used
 Claude (Anthropic) was used during development for the following purposes:
 
 Generating boilerplate Streamlit layout code (column structure, metric cards, custom CSS)
